@@ -391,8 +391,7 @@ extension Array {
     subscript(safe index: Int) -> Element {
         var indexClone:Int=index
         if (indexClone < 0){
-           //IDK
-            indexClone=self.count-1
+            indexClone=(self.count + (indexClone % self.count)) % self.count
         }
         if (indexClone >= self.count){
             indexClone = indexClone % self.count
@@ -407,8 +406,9 @@ for i in 0...10{
 
 //Reverse
 print("Reverse")
-print(array[safe: -1])
-
+for i in -4...0{
+    print(array[safe: i])
+}
 
 //Sources:
 //https://www.avanderlee.com/swift/computed-property/
